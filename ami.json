@@ -1,13 +1,13 @@
 {
     "variables": {
-      "aws_access_key": "{{env `aws_access_key_id`}}",
-      "aws_secret_key": "{{env `aws_secret_access_key`}}",
+      "aws_access_key": "{{env `AWS_ACCESS_KEY_ID`}}",
+      "aws_secret_key": "{{env `AWS_SECRET_ACCESS_KEY`}}",
       "ami_region" :"us-east-1",
-      "source_ami":"{{env `source_ami`}}",
+      "source_ami":"{{env `SOURCE_AMI`}}",
       "instance_type": "t2.micro",
       "name": "csye6225"
       
-      
+
     },
     "builders": [{
       "type": "amazon-ebs",
