@@ -1,0 +1,48 @@
+{
+    "variables": {
+      "aws_access_key": "",
+      "aws_secret_key": "",
+      "ami_region" :"us-east-1",
+      "source_ami":"",
+      "instance_type": "t2.micro",
+      "name": "csye6225"
+      
+    },
+    "builders": [{
+      "type": "amazon-ebs",
+      "access_key": "{{user `aws_access_key`}}",
+      "secret_key": "{{user `aws_secret_key`}}",
+      "region": "{{user `ami_region`}}",
+      "source_ami": "{{user `source_ami`}}",
+      "instance_type": "{{user `instance_type`}}",
+      "ssh_username": "ubuntu",
+      "ami_name": "{{user `name`}}",
+      "ami_description": "AMI ubuntu test",
+      "associate_public_ip_address": true,
+      "ami_users": "",
+      "launch_block_device_mappings":[{
+        "device_name" : "/dev/sda1",
+        "volume_size": 8,
+        "volume_type": "gp2",
+        "delete_on_termination": true
+  
+      }],
+      "tags": {
+        "Name": "{{user `name`}}"
+      }
+     
+  
+    }],
+    "provisioners": [{
+      "type": "shell",
+      "inline":[
+          "sudo apt-get clean",
+            "sudo apt-get update",
+            "sudo apt install software-properties-common",
+            "sudo add-apt-repository ppa:deadsnakes/ppa",
+            "sudo apt update",
+            "sudo apt install python3"
+      ]
+    }]
+  }
+  
