@@ -18,7 +18,7 @@
       "instance_type": "{{user `instance_type`}}",
       "ssh_username": "ubuntu",
       "ami_name": "{{user `name`}}",
-      "ami_description": "AMI ubuntu test1",
+      "ami_description": "AMI ubuntu test2",
       "associate_public_ip_address": true,
       "ami_users": "",
       "launch_block_device_mappings":[{
