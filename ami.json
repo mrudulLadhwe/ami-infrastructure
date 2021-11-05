@@ -5,7 +5,7 @@
       "ami_region" :"us-east-1",
       "source_ami":"{{env `SOURCE_AMI`}}",
       "instance_type": "t2.micro",
-      "name": "csye6225"
+      "name": "csye6225-{{timestamp}}"
       
 
     },
