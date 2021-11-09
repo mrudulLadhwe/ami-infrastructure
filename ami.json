@@ -1,12 +1,13 @@
 {
     "variables": {
-      "aws_access_key": "{{env `aws_access_key_id`}}",
-      "aws_secret_key": "{{env `aws_secret_access_key`}}",
+      "aws_access_key": "{{env `AWS_ACCESS_KEY_ID`}}",
+      "aws_secret_key": "{{env `AWS_SECRET_ACCESS_KEY`}}",
       "ami_region" :"us-east-1",
-      "source_ami":"{{env `source_ami`}}",
+      "source_ami":"{{env `SOURCE_AMI`}}",
       "instance_type": "t2.micro",
-      "name": "csye6225"
+      "name": "csye6225-{{timestamp}}"
       
+
     },
     "builders": [{
       "type": "amazon-ebs",
@@ -17,9 +18,9 @@
       "instance_type": "{{user `instance_type`}}",
       "ssh_username": "ubuntu",
       "ami_name": "{{user `name`}}",
-      "ami_description": "AMI ubuntu test",
+      "ami_description": "AMI ubuntu test1",
       "associate_public_ip_address": true,
-      "ami_users": "",
+      "ami_users": "695302741031",
       "launch_block_device_mappings":[{
         "device_name" : "/dev/sda1",
         "volume_size": 8,
@@ -41,7 +42,12 @@
             "sudo apt install software-properties-common",
             "sudo add-apt-repository ppa:deadsnakes/ppa",
             "sudo apt update",
-            "sudo apt install python3"
+            "sudo apt install python3",
+            "sudo apt-get install ruby -y",
+            "cd /home/ubuntu",
+            "wget https://aws-codedeploy-us-east-1.s3.us-east-1.amazonaws.com/latest/install",
+            "chmod +x ./install",
+            "sudo ./install auto"
       ]
     }]
   }
